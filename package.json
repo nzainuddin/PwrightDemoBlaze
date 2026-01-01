@@ -1,0 +1,23 @@
+{
+  "name": "pwrightdemoblaze",
+  "version": "1.0.0",
+  "description": "Automation Test for DemoBlaze website using Playwright - Typescript",
+  "main": "index.js",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nzainuddin/PwrightDemoBlaze.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/nzainuddin/PwrightDemoBlaze/issues"
+  },
+  "homepage": "https://github.com/nzainuddin/PwrightDemoBlaze#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.57.0",
+    "@types/node": "^25.0.3"
+  }
+}
