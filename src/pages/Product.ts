@@ -18,4 +18,22 @@ export class ProductPage {
         this.nextButton = page.locator('.carousel-control-next');
         this.addToCartButton = page.locator('a', { hasText: 'Add to cart' });
     }
+
+    async clickPhoneCategory() {
+        await this.phoneCategoryMenu.click();
+    }
+
+    async clickLaptopCategory() {
+        await this.laptopCategoryMenu.click();
+    }
+    
+    async clickMonitorCategory() {
+        await this.monitorCategoryMenu.click();
+    }
+
+    async selectPhoneByName(phoneName: string) {
+        const phoneLink = this.page.locator('a', { hasText: phoneName });
+        await phoneLink.click();
+        await this.addToCartButton.click();
+    }
 }
