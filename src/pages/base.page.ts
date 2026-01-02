@@ -9,6 +9,7 @@ export class BasePage {
     readonly contactMessageInput: Locator;
     readonly contactSendMsgButton: Locator;
     // Login Modal
+    readonly loginMenu: Locator;
     readonly loginUsernameInput: Locator;
     readonly loginPasswordInput: Locator;
     readonly loginButton: Locator;
@@ -28,15 +29,29 @@ export class BasePage {
         this.contactNameInput = page.locator('#contact-name');
         this.contactMessageInput = page.locator('#contact-message');
         this.contactSendMsgButton = page.locator('#contact-send-message');
-        this.loginUsernameInput = page.locator('#login-username');
-        this.loginPasswordInput = page.locator('#login-password');
-        this.loginButton = page.locator('#login-button');
-        this.signUpUsernameInput = page.locator('#sign-up-username');
-        this.signUpPasswordInput = page.locator('#sign-up-password');
-        this.signUpButton = page.locator('#sign-up-button');
+        this.loginMenu = page.locator('#login2');
+        this.loginUsernameInput = page.locator('#loginusername');
+        this.loginPasswordInput = page.locator('#loginpassword');
+        this.loginButton = page.getByRole('button', { name: 'Log in' });
+        this.signUpUsernameInput = page.locator('#sign-username');
+        this.signUpPasswordInput = page.locator('#sign-password');
+        this.signUpButton = page.getByRole('button', { name: 'Sign up' });
         this.closeIconModalButton = page.locator('.modal-close-icon');
         this.closeModalButton = page.locator('#close-modal-button');
 
     }
+
+    async signUp(username: string, password: string) {
+        await this.signUpUsernameInput.fill(username);
+        await this.signUpPasswordInput.fill(password);
+        await this.signUpButton.click();
+    }
+
+    async login(username: string, password: string) {
+        await this.loginMenu.click();
+        await this.loginUsernameInput.fill(username);
+        await this.loginPasswordInput.fill(password);
+        await this.loginButton.click();
+    }   
 
 }
