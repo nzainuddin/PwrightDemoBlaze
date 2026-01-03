@@ -1,16 +1,13 @@
-import { test } from '@playwright/test';
-import { BasePage } from '../../src/pages/base.page';
+import { test } from '../../src/fixtures';
 
-test('Allowed to submit empty contact form', async ({ page }) => {
-  const basePage = new BasePage(page);
-  await page.goto('/');
-  await basePage.contactUs('','','');
-  await basePage.acceptDialogBox('Thanks for the message!!');
+test('Allowed to submit empty contact form', async ({ accessAsGuest, pages }) => {
+  accessAsGuest;
+  await pages.basePage.contactUs('','','');
+  await pages.basePage.acceptDialogBox('Thanks for the message!!');
 });
 
-test('Submit contact form', async ({ page }) => {
-  const basePage = new BasePage(page);
-  await page.goto('/');
-  await basePage.contactUs('test@example.com', 'user', 'This is a test message.');
-  await basePage.acceptDialogBox('Thanks for the message!!');
+test('Submit contact form', async ({ accessAsGuest, pages }) => {
+  accessAsGuest;
+  await pages.basePage.contactUs('test@example.com', 'user', 'This is a test message.');
+  await pages.basePage.acceptDialogBox('Thanks for the message!!');
 });

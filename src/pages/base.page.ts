@@ -43,6 +43,10 @@ export class BasePage {
 
     }
 
+    async navigateToHomePage() {
+        await this.page.goto('/');
+    }
+
     async signUp(username: string, password: string) {
         await this.signUpMenu.click();
         await this.signUpUsernameInput.fill(username);
