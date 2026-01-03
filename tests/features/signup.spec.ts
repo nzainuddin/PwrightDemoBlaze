@@ -1,17 +1,14 @@
-import { test } from '@playwright/test';
-import { BasePage } from '../../src/pages/base.page';
+import { test } from '../../src/fixtures';
 
-test('Submit empty sign up form', async ({ page }) => {
-  const basePage = new BasePage(page);
-  await page.goto('/');
-  await basePage.signUp('', '');
-  await basePage.acceptDialogBox('Please fill out Username and Password.');
+test('Submit empty sign up form', async ({ accessAsGuest, pages }) => {
+  accessAsGuest;
+  await pages.basePage.signUp('', '');
+  await pages.basePage.acceptDialogBox('Please fill out Username and Password.');
 });
 
-test('Sign up with existing user', async ({ page }) => {
-  const basePage = new BasePage(page);
-  await page.goto('/');
-  await basePage.signUp('testusera', 'password123');
-  await basePage.acceptDialogBox('This user already exist.');
+test('Sign up with existing user', async ({ accessAsGuest, pages }) => {
+  accessAsGuest;
+  await pages.basePage.signUp('testusera', 'password123');
+  await pages.basePage.acceptDialogBox('This user already exist.');
 });
 
