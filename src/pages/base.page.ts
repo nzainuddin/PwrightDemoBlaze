@@ -1,4 +1,4 @@
-import { Locator, type Page } from '@playwright/test';
+import { expect, Locator, type Page } from '@playwright/test';
 
 
 export class BasePage {
@@ -14,14 +14,13 @@ export class BasePage {
     readonly loginPasswordInput: Locator;
     readonly loginButton: Locator;
     // Sign Up Modal
+    readonly signUpMenu: Locator;
     readonly signUpUsernameInput: Locator; 
     readonly signUpPasswordInput: Locator;
     readonly signUpButton: Locator;
 
     readonly closeIconModalButton: Locator;
     readonly closeModalButton: Locator;
-
-
 
     constructor(page: Page) {
         this.page = page;
@@ -33,6 +32,7 @@ export class BasePage {
         this.loginUsernameInput = page.locator('#loginusername');
         this.loginPasswordInput = page.locator('#loginpassword');
         this.loginButton = page.getByRole('button', { name: 'Log in' });
+        this.signUpMenu = page.locator('#signin2');
         this.signUpUsernameInput = page.locator('#sign-username');
         this.signUpPasswordInput = page.locator('#sign-password');
         this.signUpButton = page.getByRole('button', { name: 'Sign up' });
@@ -42,6 +42,7 @@ export class BasePage {
     }
 
     async signUp(username: string, password: string) {
+        await this.signUpMenu.click();
         await this.signUpUsernameInput.fill(username);
         await this.signUpPasswordInput.fill(password);
         await this.signUpButton.click();
@@ -54,4 +55,20 @@ export class BasePage {
         await this.loginButton.click();
     }   
 
+    async loggedInUser(username: string) {
+        const userLocator = await this.page.locator('#nameofuser');
+        await expect(userLocator).toHaveText(`Welcome ${username}`);
+    }
+
+    async logOut() {
+        const logoutMenu = this.page.getByRole('link', { name: 'Log out' });
+        await logoutMenu.click();
+    }
+
+    async acceptDialogBox(message: string) {
+        this.page.once('dialog', async dialog => { 
+            expect(await dialog.message()).toBe(message);
+            await dialog.accept();
+        });
+    }
 }
