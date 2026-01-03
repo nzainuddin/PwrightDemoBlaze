@@ -1,6 +1,6 @@
 import { Locator, type Page } from '@playwright/test';
 
-export class ProductPage {
+export class HomePage {
     private readonly page: Page;
     readonly phoneCategoryMenu: Locator;
     readonly laptopCategoryMenu: Locator;
@@ -29,6 +29,25 @@ export class ProductPage {
     
     async clickMonitorCategory() {
         await this.monitorCategoryMenu.click();
+    }
+
+    async selectProduct(category: string, productName: string) {
+        switch(category.toLowerCase()) {
+            case 'phones':
+                await this.clickPhoneCategory();    
+                break;
+            case 'laptops':
+                await this.clickLaptopCategory();
+                break;
+            case 'monitors':
+                await this.clickMonitorCategory();
+                break;
+            default:
+                throw new Error(`Unknown category: ${category}`);
+        }
+        const productLink = this.page.locator('a', { hasText: productName });
+        await productLink.click();
+        await this.addToCartButton.click();
     }
 
     async selectPhoneByName(phoneName: string) {

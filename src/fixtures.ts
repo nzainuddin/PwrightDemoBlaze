@@ -1,5 +1,6 @@
 import { test as base, Page } from '@playwright/test';
 import { BasePage } from './pages/base.page';
+import { HomePage } from './pages/home.page';
 import dotenv from 'dotenv';
 import path from 'path';
 
@@ -11,6 +12,7 @@ type CustomFixtures = {
     accessAsGuest: Page;
     pages: {
         basePage: BasePage;
+        productPage: HomePage;
     };
 };
 
@@ -26,7 +28,8 @@ export const test = base.extend<CustomFixtures>({
 
     pages: async ({ page }, use) => {
         await use({
-            basePage: new BasePage(page)
+            basePage: new BasePage(page),
+            productPage: new HomePage(page),
         })
     },
 

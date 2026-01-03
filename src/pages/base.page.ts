@@ -3,6 +3,8 @@ import { expect, Locator, type Page } from '@playwright/test';
 
 export class BasePage {
     private readonly page: Page;
+    readonly homeMenu: Locator;
+    readonly cartMenu: Locator;
     // Contact Modal
     readonly contactUsMenu: Locator;
     readonly contactEmailInput: Locator;
@@ -25,6 +27,8 @@ export class BasePage {
 
     constructor(page: Page) {
         this.page = page;
+        this.homeMenu = page.getByRole('link', { name: 'Home' });
+        this.cartMenu = page.getByRole('link', { name: 'Cart' });
         this.contactUsMenu = page.getByRole('link', { name: 'Contact' });
         this.contactEmailInput = page.locator('#recipient-email');
         this.contactNameInput = page.locator('#recipient-name');
@@ -45,6 +49,14 @@ export class BasePage {
 
     async navigateToHomePage() {
         await this.page.goto('/');
+    }
+
+    async clickHomeMenu() {
+        await this.homeMenu.click();
+    }
+
+    async clickCartMenu() {
+        await this.cartMenu.click();
     }
 
     async signUp(username: string, password: string) {
