@@ -4,6 +4,7 @@ import { expect, Locator, type Page } from '@playwright/test';
 export class BasePage {
     private readonly page: Page;
     // Contact Modal
+    readonly contactUsMenu: Locator;
     readonly contactEmailInput: Locator;
     readonly contactNameInput: Locator;
     readonly contactMessageInput: Locator;
@@ -24,10 +25,11 @@ export class BasePage {
 
     constructor(page: Page) {
         this.page = page;
-        this.contactEmailInput = page.locator('#contact-email');
-        this.contactNameInput = page.locator('#contact-name');
-        this.contactMessageInput = page.locator('#contact-message');
-        this.contactSendMsgButton = page.locator('#contact-send-message');
+        this.contactUsMenu = page.getByRole('link', { name: 'Contact' });
+        this.contactEmailInput = page.locator('#recipient-email');
+        this.contactNameInput = page.locator('#recipient-name');
+        this.contactMessageInput = page.locator('#message-text');
+        this.contactSendMsgButton = page.getByRole('button', { name: 'Send message' });
         this.loginMenu = page.locator('#login2');
         this.loginUsernameInput = page.locator('#loginusername');
         this.loginPasswordInput = page.locator('#loginpassword');
@@ -53,11 +55,19 @@ export class BasePage {
         await this.loginUsernameInput.fill(username);
         await this.loginPasswordInput.fill(password);
         await this.loginButton.click();
-    }   
+    }  
 
     async loggedInUser(username: string) {
         const userLocator = await this.page.locator('#nameofuser');
         await expect(userLocator).toHaveText(`Welcome ${username}`);
+    }
+
+    async contactUs(email: string, name: string, message: string) {
+        await this.contactUsMenu.click();
+        await this.contactEmailInput.fill(email);
+        await this.contactNameInput.fill(name);
+        await this.contactMessageInput.fill(message);
+        await this.contactSendMsgButton.click();
     }
 
     async logOut() {
