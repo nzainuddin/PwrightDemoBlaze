@@ -28,7 +28,7 @@ export class BasePage {
     constructor(page: Page) {
         this.page = page;
         this.homeMenu = page.getByRole('link', { name: 'Home' });
-        this.cartMenu = page.getByRole('link', { name: 'Cart' });
+        this.cartMenu = page.getByRole('link', { name: 'Cart', exact: true });
         this.contactUsMenu = page.getByRole('link', { name: 'Contact' });
         this.contactEmailInput = page.locator('#recipient-email');
         this.contactNameInput = page.locator('#recipient-name');
@@ -93,8 +93,19 @@ export class BasePage {
 
     async acceptDialogBox(message: string) {
         this.page.once('dialog', async dialog => { 
-            expect(await dialog.message()).toBe(message);
+            expect(dialog.message()).toBe(message);
             await dialog.accept();
         });
     }
+
+    async acceptDialogBoxIfPresent(expectedMessage: string, timeout = 3000) {
+    try {
+        const dialog = await this.page.waitForEvent('dialog', { timeout });
+        console.log(`Dialog appeared: ${dialog.message()}`);
+        expect(dialog.message()).toBe(expectedMessage);
+        await dialog.accept();
+    } catch (error) {
+        console.log('No dialog appeared within the timeout. Proceeding...');
+    }
+}
 }

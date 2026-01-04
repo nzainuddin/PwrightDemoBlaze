@@ -45,7 +45,7 @@ export class HomePage {
             default:
                 throw new Error(`Unknown category: ${category}`);
         }
-        const productLink = this.page.locator('a', { hasText: productName });
+        const productLink = this.page.locator('a', { hasText: productName }).first();
         await productLink.click();
         await this.addToCartButton.click();
     }

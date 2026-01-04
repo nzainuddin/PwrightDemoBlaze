@@ -3,6 +3,7 @@ import { BasePage } from './pages/base.page';
 import { HomePage } from './pages/home.page';
 import dotenv from 'dotenv';
 import path from 'path';
+import { CartPage } from './pages/cart.page';
 
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
@@ -13,6 +14,7 @@ type CustomFixtures = {
     pages: {
         basePage: BasePage;
         productPage: HomePage;
+        cartPage: CartPage;
     };
 };
 
@@ -30,6 +32,7 @@ export const test = base.extend<CustomFixtures>({
         await use({
             basePage: new BasePage(page),
             productPage: new HomePage(page),
+            cartPage: new CartPage(page),
         })
     },
 
