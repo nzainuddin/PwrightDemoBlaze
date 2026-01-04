@@ -1,9 +1,73 @@
-﻿Test ID,Test Scenarios,Test Step,Test Category | Module,Severity
-1000,Submit empty login form,"1. Navigate to DemoBlaze website
-2. Click on <Login> menu
-3. On Login modal, leave username and password fields empty
-4. Click <Login> button",Feature test | Login,Medium
-1001,Login with incorrect username,"1. Navigate to DemoBlaze website
-2. Click on <Login> menu
-3. On Login modal, enter invalid username and enter valid password
-4. Click <Login> button",Feature test | Login,Medium
+﻿Test ID,Test Category,Module,Test Scenarios,Test Step,Severity
+10000,Features,Contact,Allowed to submit empty contact form,"1. Navigate to DemoBlaze website
+2. Click on Contact menu
+3. On Contact modal, leave Contact Email, Contact Name, and Message input fields empty and click button
+4. Verify dialog box message and accept",Medium
+10001,Features,Contact,Submit contact form,"1. Navigate to DemoBlaze website
+2. Click on Contact menu
+3. On Contact modal, enter value on Contact Email, Contact Name, and Message input fields and click button
+4. Verify dialog box message and accept",Medium
+10002,Features,Sign Up,Submit empty sign up form,"1. Navigate to DemoBlaze website
+2. Click on Sign up menu
+3. On Sign up modal, leave Username and Password input fields empty and click button
+4. Verify dialog box message and accept",Medium
+10003,Features,Sign Up,Sign up with existing user,"1. Navigate to DemoBlaze website
+2. Click on Sign up menu
+3. On Sign up modal, enter value on Username and Password input fields and click button
+4. Verify dialog box message and accept",High
+10004,Features,Login,Submit empty login form,"1. Navigate to DemoBlaze website
+2. Click on Log in menu
+3. On Log in modal, leave Username and Password input fields empty and click button
+4. Verify dialog box message and accept",High
+10005,Features,Login,Login with incorrect name,"1. Navigate to DemoBlaze website
+2. Click on Log in menu
+3. On Log in modal, enter incorrect Username and valid Password and click button
+4. Verify dialog box message and accept",High
+10006,Features,Login,Login with incorrect password,"1. Navigate to DemoBlaze website
+2. Click on Log in menu
+3. On Log in modal, enter correct Username and incorrect Password and click button
+4. Verify dialog box message and accept",High
+10007,Features,Login,Login with correct username and password,"1. Navigate to DemoBlaze website
+2. Click on Log in menu
+3. On Log in modal, enter correct Username and Password and click button
+4. Verify dialog box message and accept",High
+10008,Features,Add to Cart,View and navigate pages: Phone category,"1. Navigate to DemoBlaze website
+2. Click on Home menu
+3. Click on Phones menu
+4. Verify products listed
+5. Navigate by clicking button and verify products listed
+6. Navigate by clicking button and verify products listed
+7. Click on any phone model listed
+8. Once product details page displayed, click on button
+9. Navigate to menu and verify product listed under table",Medium
+10009,Features,Add to Cart,View and navigate pages: Laptop category,"1. Navigate to DemoBlaze website
+2. Click on Home menu
+3. Click on Laptops menu
+4. Verify products listed
+5. Navigate by clicking button and verify products listed
+6. Navigate by clicking button and verify products listed
+7. Click on any laptop model listed
+8. Once product details page displayed, click on button
+9. Navigate to menu and verify product listed under table",Medium
+10010,Features,Add to Cart,View and navigate pages: Monitors category,"1. Navigate to DemoBlaze website
+2. Click on Home menu
+3. Click on Monitors menu
+4. Verify products listed
+5. Navigate by clicking button and verify products listed
+6. Navigate by clicking button and verify products listed
+7. Click on any laptop model listed
+8. Once product details page displayed, click on button
+9. Navigate to menu and verify product listed under table",Medium
+10011,Features,Add to Cart,Add multiple Products to Cart,"1. Navigate to DemoBlaze website
+2. Click on Home menu
+3. Click on Phones menu
+4. Select any phone and click button
+5. Navigate to Home page and click menu
+6. Select any laptop and click button
+7. Navigate to Home page and click menu
+8. Select any monitor and click button
+9. Navigate to menu and verify products listed under table",High
+,,,,,
+,,,,,
+,,,,,
+,,,,,
