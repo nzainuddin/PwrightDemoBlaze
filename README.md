@@ -16,6 +16,7 @@ Automation Test for DemoBlaze website using Playwright - Typescript
     ├── features      # Feature tests
     ├── regression    # Regression tests
     └── performance   # Performance tests
+```
 
 #### ⚡⚡⚡Running the Test
 | Mode     | Command     |
