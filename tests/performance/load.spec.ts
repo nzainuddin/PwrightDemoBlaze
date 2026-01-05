@@ -30,11 +30,23 @@ test('Home Page: Measure largest contentful paint', async ({ page }) => {
   lcpObserver.observe({ type: 'largest-contentful-paint', buffered: true });
 });
 
-test('Cart Page: Measure layout shift', async ({ page }) => {
+test('Cart Page: Load Metrics @performance', async ({ page }) => {
   await page.goto('/cart');
-  const clsObserver = new PerformanceObserver((entryList) => {
-    const cls = entryList.getEntries()[0];
-    console.log('CLS:', cls);
+  
+  const performanceTiming = await page.evaluate(() => {
+    const nav = performance.getEntriesByType('navigation')[0] as PerformanceNavigationTiming;
+    return {
+      domReady: nav.domContentLoadedEventEnd,
+      loadTime: nav.loadEventEnd,
+    };
   });
-  clsObserver.observe({ type: 'layout-shift', buffered: true });
+  
+  console.log(`Performance Metrics:`, performanceTiming);
+  expect(performanceTiming.loadTime).toBeLessThan(3000); // 3s Threshold
+});
+
+test('Cart Page: Measure paint timing', async ({ page }) => {
+  await page.goto('/cart');
+  const paintMetrics = await page.evaluate(() => performance.getEntriesByType('paint'));
+  console.log('Paint Metrics:', paintMetrics);
 });
