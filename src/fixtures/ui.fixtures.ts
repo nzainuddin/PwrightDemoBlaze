@@ -1,9 +1,9 @@
 import { test as base, Page } from '@playwright/test';
-import { BasePage } from './pages/base.page';
-import { HomePage } from './pages/home.page';
+import { BasePage } from '../ui/pages/base.page';
+import { HomePage } from '../ui/pages/home.page';
+import { CartPage } from '../ui/pages/cart.page';
 import dotenv from 'dotenv';
 import path from 'path';
-import { CartPage } from './pages/cart.page';
 
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
 

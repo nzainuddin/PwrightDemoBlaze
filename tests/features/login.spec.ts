@@ -1,4 +1,4 @@
-import { test } from '../../src/fixtures';
+import { test } from '../../src/fixtures/ui.fixtures';
 
 test('Submit empty login form', async ({ accessAsGuest, pages }) => {
   accessAsGuest;

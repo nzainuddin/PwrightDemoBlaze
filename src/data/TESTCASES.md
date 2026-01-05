@@ -1,4 +1,4 @@
-| Test ID | Test Categoy | Module | Test Scenarios          | Test Steps | Severity |
+| Test ID | Test Category | Module | Test Scenarios          | Test Steps | Severity |
 |---------|--------------|--------|-------------------------|------------|----------|
 | 10000    | Features     | Contact | Allowed to submit empty contact form | 1. Navigate to DemoBlaze website<br>2. Click on <b>Contact</b> menu<br>3. On <b>Contact</b> modal, leave <b>Contact Email</b>, <b>Contact Name</b>, and <b>Message</b> input fields empty and click <Send message> button<br>4. Verify dialog box message and accept | Medium |
 | 10001    | Features | Contact | Submit contact form | 1. Navigate to DemoBlaze website<br>2. Click on <b>Contact</b> menu<br>3. On <b>Contact</b> modal, enter value on <b>Contact Email</b>, <b>Contact Name</b>, and <b>Message</b> input fields and click <Send message> button<br>4. Verify dialog box message and accept | Medium |

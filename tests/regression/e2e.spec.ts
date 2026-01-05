@@ -1,16 +1,16 @@
 import { test } from '@playwright/test';
-import { ProductPage } from '../../src/pages/product.page';
+import { HomePage } from '../../src/ui/pages/home.page';
 
 test('Able to checkout cart as a signed up user', async ({ page }) => {
-  const productPage = new ProductPage(page);
+  const homePage = new HomePage(page);
   await page.goto('/');
-  await productPage.clickPhoneCategory();
-  await productPage.selectPhoneByName('Samsung galaxy s6');
+  await homePage.clickPhoneCategory();
+  await homePage.selectPhoneByName('Samsung galaxy s6');
 });
 
 test('Able to checkout cart as a guest', async ({ page }) => {
-  const productPage = new ProductPage(page);
+  const homePage = new HomePage(page);
   await page.goto('/');
-  await productPage.clickPhoneCategory();
-  await productPage.selectPhoneByName('Samsung galaxy s6');
+  await homePage.clickPhoneCategory();
+  await homePage.selectPhoneByName('Samsung galaxy s6');
 });

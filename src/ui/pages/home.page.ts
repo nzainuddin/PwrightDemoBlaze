@@ -4,7 +4,8 @@ export class HomePage {
     private readonly page: Page;
     readonly phoneCategoryMenu: Locator;
     readonly laptopCategoryMenu: Locator;
-    readonly monitorCategoryMenu: Locator
+    readonly monitorCategoryMenu: Locator;
+    readonly productNameLink: Locator;
     readonly previousButton: Locator;
     readonly nextButton: Locator;
     readonly addToCartButton: Locator;
@@ -14,8 +15,9 @@ export class HomePage {
         this.phoneCategoryMenu = page.locator('a', { hasText: 'Phones' });
         this.laptopCategoryMenu = page.locator('a', { hasText: 'Laptops' });
         this.monitorCategoryMenu = page.locator('a', { hasText: 'Monitors' });
-        this.previousButton = page.locator('.carousel-control-prev');
-        this.nextButton = page.locator('.carousel-control-next');
+        this.productNameLink = page.locator('//h4[@class="card-title"]/a');
+        this.previousButton = page.getByRole('button', { name: 'Previous' });
+        this.nextButton = page.getByRole('button', { name: 'Next' });
         this.addToCartButton = page.locator('a', { hasText: 'Add to cart' });
     }
 
@@ -54,5 +56,22 @@ export class HomePage {
         const phoneLink = this.page.locator('a', { hasText: phoneName });
         await phoneLink.click();
         await this.addToCartButton.click();
+    }
+
+    async getProductNames(): Promise<string[]> {
+        const count = await this.productNameLink.count();
+        const productNames: string[] = [];
+        for (let i = 0; i < count; i++) {
+            productNames.push(await this.productNameLink.nth(i).innerText());
+        }   
+        return productNames;
+    }
+
+    async clickPreviousButton() {
+        await this.previousButton.click();
+    }
+
+    async clickNextButton() {
+        await this.nextButton.click();
     }
 }

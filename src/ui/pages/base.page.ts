@@ -1,6 +1,5 @@
 import { expect, Locator, type Page } from '@playwright/test';
 
-
 export class BasePage {
     private readonly page: Page;
     readonly homeMenu: Locator;
@@ -99,13 +98,13 @@ export class BasePage {
     }
 
     async acceptDialogBoxIfPresent(expectedMessage: string, timeout = 3000) {
-    try {
-        const dialog = await this.page.waitForEvent('dialog', { timeout });
-        console.log(`Dialog appeared: ${dialog.message()}`);
-        expect(dialog.message()).toBe(expectedMessage);
-        await dialog.accept();
-    } catch (error) {
-        console.log('No dialog appeared within the timeout. Proceeding...');
+        try {
+            const dialog = await this.page.waitForEvent('dialog', { timeout });
+            console.log(`Dialog appeared: ${dialog.message()}`);
+            expect(dialog.message()).toBe(expectedMessage);
+            await dialog.accept();
+        } catch (error) {
+            console.log('No dialog appeared within the timeout. Proceeding...');
+        }
     }
-}
 }

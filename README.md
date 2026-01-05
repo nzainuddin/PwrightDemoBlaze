@@ -3,15 +3,14 @@ Automation Test for DemoBlaze website using Playwright - Typescript
 
 ### Project Structure
 
-## Project Structure
-
 ```text
 .
 ├── src
+│   ├── api           # Contain BaseApi and Controller files 
 │   ├── data          # Test data files and Test Cases (JSON/CSV)
-│   ├── pages         # Page Object Models (POM)
-│   ├── fixtures.ts   # Custom Playwright fixtures
-│   └── helpers.ts    # Utility/Reusable functions
+│   ├── ui/pages      # Page Object Models (POM)
+│   ├── fixtures      # Custom Playwright fixtures (API / UI)
+│   └── utils         # Utility/Reusable functions
 └── tests
     ├── features      # Feature tests
     ├── regression    # Regression tests
@@ -20,7 +19,7 @@ Automation Test for DemoBlaze website using Playwright - Typescript
 
 #### ⚡⚡⚡Running the Test
 | Mode     | Command     |
-|----------|:-----------:|
+|----------|-----------|
 | Headless | npx playwright test  |
 | Headed   | npx playwright test --headed |
 | UI       | npx playwright --ui |
