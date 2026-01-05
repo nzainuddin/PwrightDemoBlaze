@@ -14,3 +14,9 @@ test('Home Page Load Metrics @performance', async ({ page }) => {
   console.log(`Performance Metrics:`, performanceTiming);
   expect(performanceTiming.loadTime).toBeLessThan(3000); // 3s Threshold
 });
+
+test('Measure paint timing', async ({ page }) => {
+  await page.goto('/');
+  const paintMetrics = await page.evaluate(() => performance.getEntriesByType('paint'));
+  console.log('Paint Metrics:', paintMetrics);
+});
